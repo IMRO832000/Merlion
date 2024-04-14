@@ -83,7 +83,7 @@ class NAB(TSADBaseDataset):
             if len(df["timestamp"][df["timestamp"].diff() == datetime.timedelta(0)]) != 0:
                 df = df.drop_duplicates(subset="timestamp", keep="first")
                 logger.warning(f"Time series {csv} (index {i}) has timestamp duplicates. Kept first values.")
-
+#line 87 gives TypeError: int() argument must be a string, a bytes-like object or a real number, not 'Timedelta'.
             all_dt = np.unique(np.diff(df["timestamp"])).astype(np.int64)
             gcd_dt = all_dt[0]
             for dt in all_dt[1:]:
